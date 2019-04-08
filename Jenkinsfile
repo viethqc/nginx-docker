@@ -1,11 +1,12 @@
 pipeline {
     agent any
     stages {
-        stage('Build image') {
-            steps {
-                echo 'Starting to build docker image'
-				ls
-            }
-        }
+		stage('Building image') {
+			steps{
+				script {
+					docker.build + "hello:$BUILD_NUMBER"
+				}
+			}
+		}
     }
 }
